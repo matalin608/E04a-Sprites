@@ -17,13 +17,24 @@ class MyGame(arcade.Window):
         os.chdir(file_path)
         arcade.set_background_color(open_color.white)
 
+        self.list = arcade.SpriteList()
+
 
     def setup(self):
-        pass        
+        stuffs = ['food.2','food.3']
+        for i in range(2):
+            stuff = stuffs[i]
+            x = random.randint(0,800)
+            y = random.randint(0,600)
+            self.stuffs_sprite = arcade.Sprite("assets/{stuff}.png".format(stuff = stuff), 0.1)
+            self.stuffs_sprite.center_x = x
+            self.stuffs_sprite.center_y = y
+            self.list.append(self.stuffs_sprite)
+               
 
     def on_draw(self):
         arcade.start_render()
-        pass
+        self.list.draw()
 
 
     def update(self, delta_time):
